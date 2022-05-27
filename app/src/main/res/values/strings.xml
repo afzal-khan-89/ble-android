@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BleTest</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello ble list fragment</string>
+    <string name="teton_ble_test">Teton Ble Test</string>
+    <string name="ble_list">Device List</string>
+</resources>

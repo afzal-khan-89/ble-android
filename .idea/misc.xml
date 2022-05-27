@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.332" />
+        <entry key="..\:/android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.332" />
+        <entry key="..\:/android/app/src/main/res/layout/activity_ble.xml" value="0.2609375" />
+        <entry key="..\:/android/app/src/main/res/layout/activity_ble2.xml" value="0.21197916666666666" />
+        <entry key="..\:/android/app/src/main/res/layout/activity_main.xml" value="0.13269927536231885" />
+        <entry key="..\:/android/app/src/main/res/layout/ble_divice_list_item.xml" value="0.21197916666666666" />
+        <entry key="..\:/android/app/src/main/res/layout/ble_list.xml" value="0.17395833333333333" />
+        <entry key="..\:/android/app/src/main/res/layout/fragment_ble_central.xml" value="0.21197916666666666" />
+        <entry key="..\:/android/app/src/main/res/layout/fragment_ble_list.xml" value="0.2609375" />
+        <entry key="..\:/android/app/src/main/res/layout/list_item_view.xml" value="0.17395833333333333" />
+        <entry key="..\:/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.332" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
