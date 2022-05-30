@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.teton.blelearn.R;
+import com.teton.blelearn.model.BleDevice;
 
 import java.util.List;
 
@@ -21,9 +22,9 @@ public class BleDeviceListAdapter extends  RecyclerView.Adapter<BleDeviceListAda
     }
 
 
-    private List<String> bleDeviceList;
+    private List<BleDevice> bleDeviceList;
     private final OnItemClickListener listener;
-    public BleDeviceListAdapter(List<String> deviceList, OnItemClickListener listener) {
+    public BleDeviceListAdapter(List<BleDevice> deviceList, OnItemClickListener listener) {
         this.bleDeviceList = deviceList;
         this.listener = listener ;
     }
@@ -40,9 +41,11 @@ public class BleDeviceListAdapter extends  RecyclerView.Adapter<BleDeviceListAda
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String item = bleDeviceList.get(position);
-        TextView textView = holder.deviceName;
-        textView.setText(item);
+        BleDevice leDevice = bleDeviceList.get(position);
+        TextView dName = holder.deviceName;
+        TextView dAddress = holder.deviceAddress;
+        dName.setText(leDevice.getName());
+        dAddress.setText(leDevice.getAddress());
     }
 
     @Override
@@ -52,16 +55,18 @@ public class BleDeviceListAdapter extends  RecyclerView.Adapter<BleDeviceListAda
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView deviceName;
+        public TextView deviceAddress;
         public Button connectTo;
         public ViewHolder(View itemView) {
             super(itemView);
             deviceName = (TextView) itemView.findViewById(R.id.device_neme);
+            deviceAddress = (TextView) itemView.findViewById(R.id.device_address);
             connectTo = (Button) itemView.findViewById(R.id.connect_to);
             connectTo.setOnClickListener(this);
         }
         @Override
         public void onClick(View view) {
-            listener.onItemClick(deviceName.getText().toString());
+            listener.onItemClick(deviceAddress.getText().toString());
         }
     }
 }

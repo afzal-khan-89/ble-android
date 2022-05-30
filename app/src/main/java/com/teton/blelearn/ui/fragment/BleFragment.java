@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.teton.blelearn.R;
+import com.teton.blelearn.model.BleDevice;
 import com.teton.blelearn.ui.activity.BleCentral;
 import com.teton.blelearn.ui.helper.adapter.BleDeviceListAdapter;
 
@@ -42,7 +43,7 @@ public class BleFragment extends Fragment implements BleDeviceListAdapter.OnItem
     private Handler mHandler = new Handler();
 
     ListView bleDeviceListView ;
-    List<String> bleDeviceList ;
+    List<BleDevice> bleDeviceList ;
     ArrayAdapter<String> bleListAdapter;
     BleDeviceListAdapter mBleListAdapter;
 
@@ -75,8 +76,6 @@ public class BleFragment extends Fragment implements BleDeviceListAdapter.OnItem
         bluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
 
         bleDeviceList =  new ArrayList<>();
-        bleDeviceList.add("ble dummy -1");
-        bleDeviceList.add("ble dummy -2");
 
         View v = inflater.inflate(R.layout.fragment_ble_list, container, false);
 
@@ -93,7 +92,6 @@ public class BleFragment extends Fragment implements BleDeviceListAdapter.OnItem
     @Override
     public void onResume() {
         super.onResume();
-
         leScanCallback = new ScanCallback() {
             @Override
             public void onScanResult(int callbackType, ScanResult result) {
@@ -103,12 +101,18 @@ public class BleFragment extends Fragment implements BleDeviceListAdapter.OnItem
                 if( null == dName || null == dAddress ){
                     return ;
                 }
-                if(!bleDeviceList.contains(dName)){
-                    bleDeviceList.add(dName);
-                    mBleListAdapter.notifyDataSetChanged();
+                for(BleDevice leDevice : bleDeviceList){
+                    if (leDevice.getName().contains(dName)){
+                        return;
+                    }
                 }
-                Log.i(TAG, "Remote device name: " + dName);
-                Log.i(TAG, "Remote address: " + dAddress);
+                BleDevice bleDevice = new BleDevice();
+                bleDevice.setName(dName);
+                bleDevice.setAddress(dAddress);
+                bleDeviceList.add(bleDevice);
+                mBleListAdapter.notifyDataSetChanged();
+                Log.d(TAG, "Remote device name: " + dName);
+                Log.d(TAG, "Remote address: " + dAddress);
                 // ByteArrayToString(result.getScanRecord().getBytes());
                 //printScanRecord(result.getScanRecord().getBytes());
             }
